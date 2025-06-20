@@ -1,1 +1,9 @@
-body { font-family: sans-serif; max-width: 768px; margin: auto; padding: 1rem; } .card { border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem; }
+body {
+  font-family: sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+header, footer {
+  text-align: center;
+}
