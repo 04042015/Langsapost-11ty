@@ -1,17 +1,22 @@
----
-layout: artikel.njk
-pagination:
-  data: collections.artikel
-  size: 10
-  alias: posts
----
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Langsapost - Berita Terkini</title>
+</head>
+<body>
+  <header>
+    <h1>Selamat Datang di Langsapost</h1>
+    <p>Portal berita nasional, internasional, dan gaya hidup</p>
+  </header>
 
-<h2>Artikel Terbaru</h2>
-{% for post in posts %}
-  <div class="card">
-    <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
-    <p><em>{{ post.data.category }} - {{ post.date | date("dd MMM yyyy") }}</em></p>
-    <img src="{{ post.data.thumbnail }}" alt="" style="max-width:100%;">
-    <p>{{ post.templateContent | striptags | truncate(200, true, "...") }}</p>
-  </div>
-{% endfor %}
+  <main>
+    <p>Website sedang dalam pengembangan. Konten akan segera tersedia.</p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Langsapost</p>
+  </footer>
+</body>
+</html>
