@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>{{ title }} - Langsapost</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ title }} | Langsapost</title>
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
   <header>
     <h1><a href="/">Langsapost</a></h1>
   </header>
+
   <main>
-    <h2>{{ title }}</h2>
-    <p><small>{{ date | date }}</small></p>
-    <div>{{ content | safe }}</div>
+    <article>
+      <h2>{{ title }}</h2>
+      <small>{{ date | date("dd LLL yyyy") }}</small>
+      <div class="article-body">
+        {{ content | safe }}
+      </div>
+    </article>
   </main>
+
   <footer>
-    <p>&copy; 2025 Langsapost</p>
+    © {{ "now" | date("yyyy") }} Langsapost
   </footer>
 </body>
 </html>
