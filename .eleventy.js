@@ -1,21 +1,19 @@
 const { DateTime } = require("luxon");
 
 module.exports = function(eleventyConfig) {
-  // Tambahkan filter tanggal
-  eleventyConfig.addFilter("date", (value, format = "dd LLLL yyyy") => {
-    return DateTime.fromJSDate(new Date(value), { zone: "utc" }).toFormat(format);
+  eleventyConfig.addPassthroughCopy("assets");
+
+  eleventyConfig.addFilter("date", (dateObj, format = "dd LLL yyyy") => {
+    return DateTime.fromJSDate(dateObj, { zone: "utc+7" }).toFormat(format);
   });
 
   return {
     dir: {
       input: ".",
-      includes: "_includes",
-      layouts: "_layouts",
+      includes: "_layouts",
       output: "_site"
     },
-    templateFormats: ["njk", "md", "html"],
     markdownTemplateEngine: "njk",
-    htmlTemplateEngine: "njk",
-    dataTemplateEngine: "njk"
+    htmlTemplateEngine: "njk"
   };
 };
