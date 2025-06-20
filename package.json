@@ -1,13 +1,13 @@
 {
   "name": "langsapost",
   "version": "1.0.0",
-  "description": "Portal berita Langsapost",
+  "description": "Website berita Langsapost dengan Eleventy",
   "scripts": {
     "start": "eleventy --serve",
     "build": "eleventy"
   },
-  "devDependencies": {
+  "dependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "luxon": "^3.4.3"
+    "luxon": "^3.4.4"
   }
 }
