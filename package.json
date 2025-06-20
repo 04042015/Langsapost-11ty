@@ -1,11 +1,22 @@
 {
   "name": "langsapost",
   "version": "1.0.0",
-  "description": "Situs berita Langsapost pakai 11ty",
+  "description": "Website berita LangsaPost dengan Eleventy (11ty)",
+  "main": ".eleventy.js",
   "scripts": {
-    "build": "eleventy"
+    "start": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy"
   },
-  "devDependencies": {
-    "@11ty/eleventy": "^2.0.1"
-  }
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "luxon": "^3.4.0"
+  },
+  "keywords": [
+    "eleventy",
+    "berita",
+    "langsapost",
+    "static site"
+  ],
+  "author": "Langsa Post",
+  "license": "MIT"
 }
