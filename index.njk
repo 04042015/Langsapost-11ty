@@ -2,18 +2,25 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Langsapost</title>
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
   <header>
-    <h1>Selamat Datang di Langsapost</h1>
+    <h1>Langsapost</h1>
     <p>Portal berita nasional, internasional, dan gaya hidup</p>
   </header>
 
   <main>
-    <p>Website sedang dalam pengembangan. Konten akan segera tersedia.</p>
+    <h2>Artikel Terbaru</h2>
+    <ul>
+      {% for post in collections.post | reverse %}
+        <li>
+          <a href="{{ post.url }}">{{ post.data.title }}</a>
+          <small>({{ post.date | date }})</small>
+        </li>
+      {% endfor %}
+    </ul>
   </main>
 
   <footer>
