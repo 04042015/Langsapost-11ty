@@ -1,10 +1,14 @@
 const { DateTime } = require("luxon");
 
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("assets");
+  // Tambahkan filter tanggal
+  eleventyConfig.addFilter("date", dateObj => {
+    return DateTime.fromJSDate(dateObj).toFormat("dd LLL yyyy");
+  });
 
-  eleventyConfig.addFilter("date", (dateObj, format = "dd LLL yyyy") => {
-    return DateTime.fromJSDate(dateObj, { zone: "utc+7" }).toFormat(format);
+  // Tambahkan koleksi artikel dari folder artikel/
+  eleventyConfig.addCollection("post", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("./artikel/*.md");
   });
 
   return {
@@ -14,6 +18,7 @@ module.exports = function(eleventyConfig) {
       output: "_site"
     },
     markdownTemplateEngine: "njk",
-    htmlTemplateEngine: "njk"
+    htmlTemplateEngine: "njk",
+    dataTemplateEngine: "njk"
   };
 };
