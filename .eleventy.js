@@ -1,15 +1,18 @@
-const { DateTime } = require("luxon");
-
 module.exports = function(eleventyConfig) {
-  // Format tanggal filter
-  eleventyConfig.addFilter("date", (dateObj, format = "dd LLL yyyy") => {
-    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat(format);
+  eleventyConfig.addPassthroughCopy("style.css");
+
+  eleventyConfig.addFilter("readableDate", dateObj => {
+    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    return new Date(dateObj).toLocaleDateString("id-ID", options);
   });
 
   return {
     dir: {
       input: ".",
+      includes: "_includes",
+      data: "_data",
       output: "_site"
-    }
+    },
+    markdownTemplateEngine: "njk"
   };
 };
