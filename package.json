@@ -1,7 +1,9 @@
 {
   "name": "langsapost",
   "version": "1.0.0",
+  "description": "Portal berita Langsapost",
   "scripts": {
+    "start": "eleventy --serve",
     "build": "eleventy"
   },
   "devDependencies": {
