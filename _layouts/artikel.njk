@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ title }} - Langsapost</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <a href="/"><img src="/assets/logo-langsapost.png" alt="Langsapost Logo" style="height: 50px;"></a>
+    <h1>Langsapost</h1>
+    <nav>
+      <a href="/kategori/nasional/">Nasional</a>
+      <a href="/kategori/internasional/">Internasional</a>
+      <a href="/kategori/healthy/">Healthy</a>
+      <a href="/kategori/sport/">Sport</a>
+      <a href="/kategori/zodiak/">Zodiak</a>
+      <a href="/kategori/loker/">Loker</a>
+    </nav>
+  </header>
+  <main>
+    <h2>{{ title }}</h2>
+    <p><em>{{ category }} - {{ date | date("dd MMM yyyy") }}</em></p>
+    <img src="{{ thumbnail }}" alt="" style="max-width: 100%; margin: 1rem 0;" />
+    {{ content | safe }}
+  </main>
+  <footer><p>© 2025 Langsapost</p></footer>
+</body>
+</html>
