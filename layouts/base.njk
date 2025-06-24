@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title }} | LangsaPost</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header>
+    <h1><a href="/">LangsaPost</a></h1>
+    <nav>
+      <a href="/">Beranda</a> |
+      <a href="/kategori/healthy">Healthy</a> |
+      <a href="/kategori/internasional">Internasional</a> |
+      <a href="/kategori/loker">Loker</a> |
+      <a href="/kategori/nasional">Nasional</a> |
+      <a href="/kategori/sport">Sport</a> |
+      <a href="/zodiak/">Zodiak</a>
+    </nav>
+    <hr />
+  </header>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer>
+    <hr />
+    <p>&copy; {{ "now" | date("yyyy") }} LangsaPost</p>
+  </footer>
+</body>
+</html>
