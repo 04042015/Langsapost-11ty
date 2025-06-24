@@ -1,17 +1,126 @@
-{% extends "layouts/base.njk" %}
+---
+layout: layouts/base.njk
+title: Tips Kesehatan - LangsaPost
+description: Kumpulan tips kesehatan dan gaya hidup sehat
+permalink: /kategori/healthy/
+---
 
-{% block content %}
-  <h1>Kategori: Healthy</h1>
-  {% if collections.healthy.length %}
-    <ul>
-    {% for post in collections.healthy %}
-      <li>
-        <a href="{{ post.url }}">{{ post.data.title }}</a>
-        <br><small>{{ post.date | date }}</small>
-      </li>
-    {% endfor %}
-    </ul>
+<main class="container mx-auto px-4 py-8">
+  <div class="mb-8">
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:text-primary-600">Beranda</a>
+      <span class="mx-2">›</span>
+      <a href="/kategori/" class="hover:text-primary-600">Kategori</a>
+      <span class="mx-2">›</span>
+      <span class="text-gray-700">Healthy</span>
+    </nav>
+    
+    <div class="flex items-center mb-6">
+      <div class="bg-pink-100 p-3 rounded-full mr-4">
+        <svg class="w-8 h-8 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+        </svg>
+      </div>
+      <div>
+        <h1 class="text-4xl font-bold text-gray-900">Tips Kesehatan</h1>
+        <p class="text-xl text-gray-600 mt-2">Tips kesehatan dan gaya hidup sehat</p>
+      </div>
+    </div>
+  </div>
+
+  {% set healthyArticles = collections.artikel | filterByCategory("Healthy") %}
+  
+  {% if healthyArticles.length > 0 %}
+    <!-- Featured Article -->
+    {% if healthyArticles[0] %}
+    <section class="mb-12">
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="md:flex">
+          {% if healthyArticles[0].data.image %}
+          <div class="md:w-1/2">
+            <img src="{{ healthyArticles[0].data.image }}" alt="{{ healthyArticles[0].data.title }}" class="w-full h-64 md:h-full object-cover">
+          </div>
+          {% endif %}
+          <div class="p-8 {% if healthyArticles[0].data.image %}md:w-1/2{% endif %}">
+            <div class="flex items-center mb-4">
+              <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-medium">Utama</span>
+              <span class="ml-3 text-gray-500 text-sm">{{ healthyArticles[0].data.date | dateFormat }}</span>
+            </div>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+              <a href="{{ healthyArticles[0].url }}" class="hover:text-primary-600 transition-colors">
+                {{ healthyArticles[0].data.title }}
+              </a>
+            </h2>
+            {% if healthyArticles[0].data.description %}
+            <p class="text-gray-600 mb-6">{{ healthyArticles[0].data.description }}</p>
+            {% else %}
+            <p class="text-gray-600 mb-6">{{ healthyArticles[0].templateContent | excerpt }}</p>
+            {% endif %}
+            <a href="{{ healthyArticles[0].url }}" class="inline-flex items-center text-primary-600 hover:text-primary-800 font-medium">
+              Baca Selengkapnya
+              <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Articles Grid -->
+    <section>
+      <h2 class="text-2xl font-bold text-gray-900 mb-8">Semua Tips Kesehatan</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for artikel in healthyArticles %}
+        {% if loop.index > 1 %}
+        <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+          {% if artikel.data.image %}
+          <img src="{{ artikel.data.image }}" alt="{{ artikel.data.title }}" class="w-full h-48 object-cover">
+          {% endif %}
+          
+          <div class="p-6">
+            <h3 class="text-lg font-semibold mb-3">
+              <a href="{{ artikel.url }}" class="hover:text-primary-600 transition-colors line-clamp-2">
+                {{ artikel.data.title }}
+              </a>
+            </h3>
+            
+            {% if artikel.data.description %}
+            <p class="text-gray-600 mb-4 text-sm line-clamp-3">
+              {{ artikel.data.description }}
+            </p>
+            {% else %}
+            <p class="text-gray-600 mb-4 text-sm line-clamp-3">
+              {{ artikel.templateContent | excerpt }}
+            </p>
+            {% endif %}
+            
+            <div class="flex justify-between items-center text-sm text-gray-500">
+              <span>{{ artikel.data.date | dateFormat }}</span>
+              <span class="bg-pink-100 text-pink-800 px-2 py-1 rounded text-xs">Healthy</span>
+            </div>
+          </div>
+        </article>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </section>
   {% else %}
-    <p><em>Belum ada artikel dalam kategori ini.</em></p>
+    <div class="text-center py-16">
+      <div class="bg-gray-100 rounded-full p-6 w-24 h-24 mx-auto mb-6 flex items-center justify-center">
+        <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold text-gray-900 mb-2">Belum Ada Tips Kesehatan</h3>
+      <p class="text-gray-600 mb-6">Tips kesehatan akan segera hadir. Silakan kembali lagi nanti.</p>
+      <a href="/artikel/" class="inline-flex items-center bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition-colors">
+        Lihat Semua Artikel
+        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
   {% endif %}
-{% endblock %}
+</main>
