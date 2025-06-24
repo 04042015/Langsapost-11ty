@@ -2,12 +2,17 @@
   "name": "langsapost",
   "version": "1.0.0",
   "description": "Website berita LangsaPost",
-  "main": ".eleventy.js",
   "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve",
     "start": "eleventy --serve",
-    "build": "eleventy"
+    "debug": "DEBUG=* eleventy"
   },
   "dependencies": {
-    "luxon": "^3.4.3"
-  }
+    "@11ty/eleventy": "^2.0.1"
+  },
+  "devDependencies": {},
+  "keywords": ["eleventy", "static-site", "news", "indonesia"],
+  "author": "LangsaPost Team",
+  "license": "MIT"
 }
