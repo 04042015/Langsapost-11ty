@@ -1,61 +1,48 @@
 ---
-layout: layouts/base.njk
+layout: base.njk
 title: Semua Artikel - LangsaPost
 permalink: /artikel/
 ---
 
 <main class="container mx-auto px-4 py-8">
-  <div class="mb-8">
-    <h1 class="text-4xl font-bold text-gray-900 mb-4">Semua Artikel</h1>
-    <p class="text-xl text-gray-600">Kumpulan artikel terbaru dari LangsaPost</p>
-  </div>
-  
-  {% if collections.artikel.length > 0 %}
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {% for artikel in collections.artikel %}
-        <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-          {% if artikel.data.image %}
-          <img src="{{ artikel.data.image }}" alt="{{ artikel.data.title }}" class="w-full h-48 object-cover">
-          {% endif %}
-          
-          <div class="p-6">
-            <h2 class="text-xl font-semibold mb-3">
-              <a href="{{ artikel.url }}" class="hover:text-primary-600 transition-colors">
-                {{ artikel.data.title }}
-              </a>
-            </h2>
-            
-            {% if artikel.data.description %}
-            <p class="text-gray-600 mb-4">
-              {{ artikel.data.description }}
-            </p>
-            {% else %}
-            <p class="text-gray-600 mb-4">
-              {{ artikel.templateContent | excerpt }}
-            </p>
-            {% endif %}
-            
-            <div class="flex justify-between items-center text-sm text-gray-500">
-              <span>{{ artikel.data.date | dateFormat }}</span>
-              {% if artikel.data.kategori %}
-                <span class="bg-primary-100 text-primary-800 px-2 py-1 rounded text-xs">
-                  {{ artikel.data.kategori }}
-                </span>
-              {% endif %}
-            </div>
-          </div>
-        </article>
-      {% endfor %}
-    </div>
-  {% else %}
-    <div class="text-center py-16">
-      <div class="bg-gray-100 rounded-full p-6 w-24 h-24 mx-auto mb-6 flex items-center justify-center">
-        <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
-        </svg>
-      </div>
-      <h3 class="text-xl font-semibold text-gray-900 mb-2">Belum Ada Artikel</h3>
-      <p class="text-gray-600 mb-6">Artikel akan segera hadir. Silakan kembali lagi nanti.</p>
-    </div>
-  {% endif %}
+    <h1 class="text-3xl font-bold mb-8">Semua Artikel</h1>
+
+    {% if collections.artikel.length > 0 %}
+        <div class="space-y-6">
+            {% for artikel in collections.artikel %}
+                <article class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        {% if artikel.data.image %}
+                            <div class="md:w-1/3">
+                                <img src="{{ artikel.data.image }}" alt="{{ artikel.data.title }}" class="w-full h-48 object-cover rounded">
+                            </div>
+                        {% endif %}
+                        
+                        <div class="flex-1">
+                            <h2 class="text-2xl font-semibold mb-3">
+                                <a href="{{ artikel.url }}" class="hover:text-blue-600">
+                                    {{ artikel.data.title }}
+                                </a>
+                            </h2>
+                            
+                            <p class="text-gray-600 mb-4">
+                                {{ artikel.templateContent | excerpt }}
+                            </p>
+                            
+                            <div class="flex justify-between items-center text-sm text-gray-500">
+                                <span>{{ artikel.data.date | dateFormat }}</span>
+                                {% if artikel.data.kategori %}
+                                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded">
+                                        {{ artikel.data.kategori }}
+                                    </span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center text-gray-500 py-8">Belum ada artikel yang dipublikasikan.</p>
+    {% endif %}
 </main>
