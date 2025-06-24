@@ -6,31 +6,6 @@ module.exports = (eleventyConfig) => {
   // Set up collections for articles
   eleventyConfig.addCollection("artikel", (collectionApi) => collectionApi.getFilteredByGlob("artikel/*.md").reverse())
 
-  // Collections untuk setiap kategori
-  eleventyConfig.addCollection("healthy", (collectionApi) =>
-    collectionApi.getFilteredByGlob("artikel/*.md").filter((item) => item.data.kategori === "Healthy"),
-  )
-
-  eleventyConfig.addCollection("internasional", (collectionApi) =>
-    collectionApi.getFilteredByGlob("artikel/*.md").filter((item) => item.data.kategori === "Internasional"),
-  )
-
-  eleventyConfig.addCollection("loker", (collectionApi) =>
-    collectionApi.getFilteredByGlob("artikel/*.md").filter((item) => item.data.kategori === "Loker"),
-  )
-
-  eleventyConfig.addCollection("nasional", (collectionApi) =>
-    collectionApi.getFilteredByGlob("artikel/*.md").filter((item) => item.data.kategori === "Nasional"),
-  )
-
-  eleventyConfig.addCollection("sport", (collectionApi) =>
-    collectionApi.getFilteredByGlob("artikel/*.md").filter((item) => item.data.kategori === "Sport"),
-  )
-
-  eleventyConfig.addCollection("zodiak", (collectionApi) =>
-    collectionApi.getFilteredByGlob("artikel/*.md").filter((item) => item.data.kategori === "Zodiak"),
-  )
-
   // Add date filter
   eleventyConfig.addFilter("dateFormat", (date) => {
     if (!date) return ""
@@ -54,17 +29,10 @@ module.exports = (eleventyConfig) => {
     return array.slice(0, limit)
   })
 
-  // Filter by category
-  eleventyConfig.addFilter("filterByCategory", (articles, category) => {
-    if (!Array.isArray(articles)) return []
-    return articles.filter((article) => article.data.kategori === category)
-  })
-
   return {
     dir: {
       input: ".",
       includes: "_includes",
-      layouts: "_layouts",
       data: "_data",
       output: "_site",
     },
