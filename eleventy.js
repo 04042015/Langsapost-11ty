@@ -41,16 +41,6 @@ module.exports = (eleventyConfig) => {
     })
   })
 
-  // Add date filter for ISO format
-  eleventyConfig.addFilter("date", (date, format) => {
-    if (!date) return ""
-    const d = new Date(date)
-    if (format === "YYYY-MM-DD") {
-      return d.toISOString().split("T")[0]
-    }
-    return d.toISOString()
-  })
-
   // Add excerpt filter
   eleventyConfig.addFilter("excerpt", (content) => {
     if (!content) return ""
@@ -74,7 +64,7 @@ module.exports = (eleventyConfig) => {
     dir: {
       input: ".",
       includes: "_includes",
-      layouts: "layouts",
+      layouts: "_layouts",
       data: "_data",
       output: "_site",
     },
