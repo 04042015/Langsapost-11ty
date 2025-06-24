@@ -60,11 +60,8 @@
         <nav class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-4">
-                    {% if site.logo %}
-                    <img src="{{ site.logo }}" alt="{{ site.name }}" class="h-10 w-auto">
-                    {% endif %}
                     <a href="/" class="text-2xl font-bold text-primary-600 hover:text-primary-700 transition-colors">
-                        {{ site.name or "LangsaPost" }}
+                        LangsaPost
                     </a>
                 </div>
                 
@@ -91,7 +88,6 @@
                             </div>
                         </div>
                     </li>
-                    <li><a href="/tentang/" class="text-gray-700 hover:text-primary-600 font-medium transition-colors">Tentang</a></li>
                 </ul>
 
                 <!-- Mobile Menu Button -->
@@ -116,7 +112,6 @@
                         <a href="/kategori/loker/" class="block py-1 text-sm text-gray-600 hover:text-primary-600">Loker</a>
                         <a href="/kategori/zodiak/" class="block py-1 text-sm text-gray-600 hover:text-primary-600">Zodiak</a>
                     </li>
-                    <li><a href="/tentang/" class="block py-2 text-gray-700 hover:text-primary-600 font-medium">Tentang</a></li>
                 </ul>
             </div>
         </nav>
@@ -128,11 +123,9 @@
         <div class="container mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8">
                 <div class="md:col-span-2">
-                    <h3 class="text-xl font-bold mb-4">{{ site.name or "LangsaPost" }}</h3>
-                    <p class="text-gray-300 mb-4">{{ site.description or "Portal berita terpercaya yang menyajikan informasi terkini dari Aceh dan Indonesia." }}</p>
-                    {% if site.email %}
-                    <p class="text-gray-300">Email: <a href="mailto:{{ site.email }}" class="text-primary-400 hover:text-primary-300">{{ site.email }}</a></p>
-                    {% endif %}
+                    <h3 class="text-xl font-bold mb-4">LangsaPost</h3>
+                    <p class="text-gray-300 mb-4">Portal berita terpercaya yang menyajikan informasi terkini dari Aceh dan Indonesia.</p>
+                    <p class="text-gray-300">Email: <a href="mailto:info@langsapost.com" class="text-primary-400 hover:text-primary-300">info@langsapost.com</a></p>
                 </div>
                 
                 <div>
@@ -153,13 +146,12 @@
                         <li><a href="/" class="hover:text-primary-400 transition-colors">Beranda</a></li>
                         <li><a href="/artikel/" class="hover:text-primary-400 transition-colors">Artikel</a></li>
                         <li><a href="/kategori/" class="hover:text-primary-400 transition-colors">Kategori</a></li>
-                        <li><a href="/tentang/" class="hover:text-primary-400 transition-colors">Tentang Kami</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
-                <p>&copy; {{ "now" | date("YYYY") }} {{ site.name or "LangsaPost" }}. Semua hak dilindungi.</p>
+                <p>&copy; 2024 LangsaPost. Semua hak dilindungi.</p>
             </div>
         </div>
     </footer>
