@@ -1,33 +1,80 @@
+---
+layout: layouts/base.njk
+title: LangsaPost - Berita Terkini
+---
 
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <title>LangsaPost</title>
-  <link rel="stylesheet" href="/style.css" />
-</head>
-<body>
-  <header class="site-header">
-    <img src="/assets/logo-langsapost.png" alt="Langsapost Logo" style="height: 60px; vertical-align: middle;" />
-    <h1>Langsapost</h1>
-  </header>
-  <nav class="site-nav">
-    <ul>
-      <li><a href="/kategori/nasional/" class="nav-link">Nasional</a></li>
-      <li><a href="/kategori/internasional/" class="nav-link">Internasional</a></li>
-      <li><a href="/kategori/healthy/" class="nav-link">Healthy</a></li>
-      <li><a href="/kategori/sport/" class="nav-link">Sport</a></li>
-      <li><a href="/kategori/zodiak/" class="nav-link">Zodiak</a></li>
-      <li><a href="/kategori/loker/" class="nav-link">Loker</a></li>
-    </ul>
-  </nav>
+<main class="container mx-auto px-4 py-8">
+  <section class="hero mb-12">
+    <div class="text-center">
+      <h1 class="text-5xl font-bold text-gray-900 mb-4">LangsaPost</h1>
+      <p class="text-xl text-gray-600 mb-8">Portal Berita Terpercaya</p>
+      <div class="w-24 h-1 bg-primary-600 mx-auto rounded"></div>
+    </div>
+  </section>
 
-  <main class="container" style="padding: 1rem;">
-    <h2>Cari Artikel</h2>
-    <input type="text" id="search-input" placeholder="Cari judul artikel..." style="width:100%;padding:0.5rem;margin-bottom:1rem;">
-    <ul id="search-results"></ul>
-  </main>
+  <section class="latest-news">
+    <h2 class="text-3xl font-bold text-gray-900 mb-8">Berita Terbaru</h2>
+    
+    {% if collections.artikel.length > 0 %}
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for artikel in collections.artikel | limit(6) %}
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            {% if artikel.data.image %}
+              <img src="{{ artikel.data.image }}" alt="{{ artikel.data.title }}" class="w-full h-48 object-cover">
+            {% endif %}
+            
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-3">
+                <a href="{{ artikel.url }}" class="hover:text-primary-600 transition-colors">
+                  {{ artikel.data.title }}
+                </a>
+              </h3>
+              
+              {% if artikel.data.description %}
+              <p class="text-gray-600 mb-4">
+                {{ artikel.data.description }}
+              </p>
+              {% else %}
+              <p class="text-gray-600 mb-4">
+                {{ artikel.templateContent | excerpt }}
+              </p>
+              {% endif %}
+              
+              <div class="flex justify-between items-center text-sm text-gray-500">
+                <span>{{ artikel.data.date | dateFormat }}</span>
+                {% if artikel.data.kategori %}
+                  <span class="bg-primary-100 text-primary-800 px-2 py-1 rounded text-xs">
+                    {{ artikel.data.kategori }}
+                  </span>
+                {% endif %}
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="text-center py-16">
+        <div class="bg-gray-100 rounded-full p-6 w-24 h-24 mx-auto mb-6 flex items-center justify-center">
+          <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Belum Ada Artikel</h3>
+        <p class="text-gray-600 mb-6">Artikel akan segera hadir. Silakan kembali lagi nanti.</p>
+      </div>
+    {% endif %}
+  </section>
 
-  <script src="/assets/search.js"></script>
-</body>
-</html>
+  {% if collections.artikel.length > 6 %}
+  <section class="all-articles mt-12">
+    <div class="text-center">
+      <a href="/artikel/" class="inline-flex items-center bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition-colors">
+        Lihat Semua Artikel
+        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+  {% endif %}
+</main>
