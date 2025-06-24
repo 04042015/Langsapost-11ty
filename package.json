@@ -5,14 +5,9 @@
   "scripts": {
     "build": "eleventy",
     "serve": "eleventy --serve",
-    "start": "eleventy --serve",
-    "debug": "DEBUG=* eleventy"
+    "start": "eleventy --serve"
   },
   "dependencies": {
     "@11ty/eleventy": "^2.0.1"
-  },
-  "devDependencies": {},
-  "keywords": ["eleventy", "static-site", "news", "indonesia"],
-  "author": "LangsaPost Team",
-  "license": "MIT"
+  }
 }
