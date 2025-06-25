@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if title %}{{ title }} - {% endif %}LangsaPost</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-red-500 rounded flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">LP</span>
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-bold text-blue-600">
+                            <a href="/" class="hover:text-blue-800">LangsaPost</a>
+                        </h1>
+                        <p class="text-sm text-gray-600">Portal Berita Terpercaya dari Langsa dan Aceh</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-blue-500 text-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-center space-x-8 py-3">
+                <a href="/" class="hover:text-blue-200 {% if page.url == '/' %}font-semibold{% endif %}">Beranda</a>
+                <a href="/artikel/" class="hover:text-blue-200 {% if '/artikel/' in page.url %}font-semibold{% endif %}">Artikel</a>
+                <a href="/kategori/" class="hover:text-blue-200 {% if '/kategori/' in page.url %}font-semibold{% endif %}">Kategori</a>
+                <a href="/tentang/" class="hover:text-blue-200 {% if '/tentang/' in page.url %}font-semibold{% endif %}">Tentang</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        {{ content | safe }}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="max-w-6xl mx-auto px-4 py-8">
+            <div class="flex items-center mb-6">
+                <div class="w-12 h-12 bg-red-500 rounded flex items-center justify-center mr-3">
+                    <span class="text-white font-bold text-lg">LP</span>
+                </div>
+                <h3 class="text-xl font-bold">LangsaPost</h3>
+            </div>
+            <p class="text-gray-300 mb-6">Portal Berita Terpercaya dari Langsa dan Aceh</p>
+            <div>
+                <h4 class="text-lg font-semibold mb-2">Kontak</h4>
+                <div class="space-y-1 text-gray-300">
+                    <p>Email: redaksi@langsapost.com</p>
+                    <p>Telepon: +62-xxx-xxxx-xxxx</p>
+                    <p>Langsa, Aceh, Indonesia</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
