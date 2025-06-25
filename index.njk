@@ -1,83 +1,64 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LangsaPost - Portal Berita Terpercaya</title>
-    <meta name="description" content="Portal berita terpercaya LangsaPost">
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-50">
-    <header class="bg-white shadow-sm">
-        <nav class="container mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <a href="/" class="text-2xl font-bold text-blue-600">LangsaPost</a>
-                <ul class="hidden md:flex space-x-6">
-                    <li><a href="/" class="hover:text-blue-600">Beranda</a></li>
-                    <li><a href="/artikel/" class="hover:text-blue-600">Artikel</a></li>
-                </ul>
+---
+layout: layouts/base.njk
+title: "Portal Berita Terpercaya"
+---
+
+<section>
+    <h2 class="text-2xl font-bold text-blue-600 mb-6">Berita Terbaru</h2>
+    
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Article 1 -->
+        <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <div class="h-48 bg-gray-200 rounded-t-lg flex items-center justify-center">
+                <span class="text-gray-500">Gambar Artikel</span>
             </div>
-        </nav>
-    </header>
-
-    <main class="container mx-auto px-4 py-8">
-        <section class="hero mb-12 text-center">
-            <h1 class="text-4xl font-bold mb-4">LangsaPost</h1>
-            <p class="text-xl text-gray-600">Portal Berita Terpercaya</p>
-        </section>
-
-        <section class="latest-news">
-            <h2 class="text-2xl font-bold mb-6">Berita Terbaru</h2>
-            
-            {% if collections.artikel.length > 0 %}
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {% for artikel in collections.artikel | limit(6) %}
-                        <article class="bg-white rounded-lg shadow-md overflow-hidden">
-                            {% if artikel.data.image %}
-                                <img src="{{ artikel.data.image }}" alt="{{ artikel.data.title }}" class="w-full h-48 object-cover">
-                            {% endif %}
-                            
-                            <div class="p-6">
-                                <h3 class="text-xl font-semibold mb-2">
-                                    <a href="{{ artikel.url }}" class="hover:text-blue-600">
-                                        {{ artikel.data.title }}
-                                    </a>
-                                </h3>
-                                
-                                <p class="text-gray-600 mb-4">
-                                    {{ artikel.templateContent | excerpt }}
-                                </p>
-                                
-                                <div class="flex justify-between items-center text-sm text-gray-500">
-                                    <span>{{ artikel.data.date | dateFormat }}</span>
-                                    {% if artikel.data.kategori %}
-                                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded">
-                                            {{ artikel.data.kategori }}
-                                        </span>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </article>
-                    {% endfor %}
+            <div class="p-4">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">Lifestyle</span>
+                    <span class="text-sm text-gray-500">25 Juni 2025</span>
                 </div>
-            {% else %}
-                <p class="text-center text-gray-500 py-8">Belum ada artikel yang dipublikasikan.</p>
-            {% endif %}
-        </section>
+                <h3 class="text-lg font-semibold mb-2">
+                    <a href="/zodiak/" class="hover:text-blue-600">Zodiak dan Keuangan Minggu Ini</a>
+                </h3>
+                <p class="text-gray-600 text-sm mb-3">Ramalan zodiak untuk keuangan minggu ini memberikan insight menarik.</p>
+                <a href="/zodiak/" class="text-blue-600 hover:text-blue-800 text-sm font-medium">Baca Selengkapnya →</a>
+            </div>
+        </article>
 
-        {% if collections.artikel.length > 6 %}
-        <section class="all-articles mt-12 text-center">
-            <a href="/artikel/" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
-                Lihat Semua Artikel
-            </a>
-        </section>
-        {% endif %}
-    </main>
+        <!-- Article 2 -->
+        <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <div class="h-48 bg-gray-200 rounded-t-lg flex items-center justify-center">
+                <span class="text-gray-500">Gambar Artikel</span>
+            </div>
+            <div class="p-4">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">Ekonomi</span>
+                    <span class="text-sm text-gray-500">24 Juni 2025</span>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">
+                    <a href="/artikel/" class="hover:text-blue-600">Perkembangan Ekonomi Aceh</a>
+                </h3>
+                <p class="text-gray-600 text-sm mb-3">Analisis mendalam tentang pertumbuhan ekonomi di provinsi Aceh.</p>
+                <a href="/artikel/" class="text-blue-600 hover:text-blue-800 text-sm font-medium">Baca Selengkapnya →</a>
+            </div>
+        </article>
 
-    <footer class="bg-gray-800 text-white py-8 mt-12">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2024 LangsaPost. Semua hak dilindungi.</p>
-        </div>
-    </footer>
-</body>
-</html>
+        <!-- Article 3 -->
+        <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <div class="h-48 bg-gray-200 rounded-t-lg flex items-center justify-center">
+                <span class="text-gray-500">Gambar Artikel</span>
+            </div>
+            <div class="p-4">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded">Budaya</span>
+                    <span class="text-sm text-gray-500">23 Juni 2025</span>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">
+                    <a href="/kategori/" class="hover:text-blue-600">Festival Budaya Langsa 2025</a>
+                </h3>
+                <p class="text-gray-600 text-sm mb-3">Persiapan festival budaya tahunan Langsa yang menampilkan seni tradisional.</p>
+                <a href="/kategori/" class="text-blue-600 hover:text-blue-800 text-sm font-medium">Baca Selengkapnya →</a>
+            </div>
+        </article>
+    </div>
+</section>
